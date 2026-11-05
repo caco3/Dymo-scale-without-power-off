@@ -16,7 +16,8 @@ I picked the units toggle button as pressing it has no impact on the scale's fun
 
 ## Firmware
 The `firmware/` directory contains a PlatformIO project for a Tenstar ESP32-C3 Super Mini. Any other ESP32-based microcontroller should work as well.
-It simulates presses on the units button: **GPIO3** pulls the button line low for 300 ms twice in a row (600 ms apart) every 2.5 minutes, and stays hi-Z the rest of the time (open-drain, never driven high), so the real button keeps working in parallel.
+It simulates presses on the units button: **GPIO3** pulls the button line low for 300 ms twice in a row (600 ms apart) every 60 s, and stays hi-Z the rest of the time (open-drain, never driven high), so the real button keeps working in parallel.
+The onboard LED blinks once per second (2 s period, 50% duty) as a heartbeat, and each press is logged with the uptime on the USB serial port (115200 baud).
 
 ### Wiring
 - GPIO3 → units button pad (the side that gets pulled low when pressed)
